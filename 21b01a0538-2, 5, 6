@@ -1,0 +1,129 @@
+#2(a)
+
+# Python Program to Print Floyd's Triangle
+rows = int(input("Please Enter the total Number of Rows : "))
+number = 1
+
+print("Floyd's Triangle")
+for i in range(1, rows + 1):
+  for j in range(1, i + 1):
+    print(number, end = ' ')
+    number = number + 1
+  print()
+  
+#2(b)
+ 
+no_heaps = int(input("Enter no of pubble heaps"))
+heaps = no_heaps
+if(no_heaps % 2 == 0):
+  while(no_heaps > 0):
+    print(heaps)
+    heaps = heaps + 2
+    no_heaps = no_heaps - 1
+else:
+  while(no_heaps > 0):
+    print(heaps)
+    heaps = heaps + 2
+    no_heaps = no_heaps - 1
+
+#5.
+#Prime.py Module
+def isPrime(n):
+	if n== 1:
+		return False
+	elif n==2 :
+		return True
+	else:
+		for i in range(2,n):
+			if n%i == 0:
+				return False
+		return True
+	
+def isPalindromePrime(n):
+	if not isPrime(n):
+		return False		
+	n = str(n)
+	if n== "":
+		return True
+	return n[0] == n[-1] and isPalindrom(n[1:-1])
+
+def isEmirp(n):
+	revn = int(str(n)[::-1])
+	return isPrime(n) and isPrime(revn)
+
+def mersennePrime(n):
+	if isPrime(n):
+		return pow(2,n)-1
+	
+def printTwinPrime(r):
+	for i in range(2,r+1):
+		for j in range(2,r+1):
+			if isPrime(i) and isPrime(j) and j-i==2:
+				print(i,',',j,'are Twin Primes')
+  
+#test module
+from Prime import *
+print("The first 50 prime numbers are:")
+k = 1
+i = 2
+while k<100:
+	if isPrime(i):
+		k+=1
+		print(i,end =" ")
+		i+=1
+	else:
+		i+=1
+	
+print("\nPrime numbers upto 100 are:")
+for c in range(2,101):
+	if isPrime(c):
+		print(c,end = " ")
+	
+print("\nEmirp numbers upto 100 are:")
+for c in range(2,101):
+	if isEmirp(c):
+		print(c,end = " ")
+	
+print("\nMersenne numbers upto 100 are:")
+for c in range(2,33):
+	if mersennePrime(c):
+		print(c,end = " ")
+	
+print("\nTwin prime numbers below 100")
+printTwinPrime(200)
+
+#6(a)
+
+str = input("Input a string")
+digits = 0
+upper = 0
+lower = 0
+for char in str:
+  if char.isdigit():
+    digits = digits + 1
+  elif char.isupper():
+    upper = upper + 1
+  elif char.islower():
+    lower = lower + 1
+  else:
+    pass
+print("Digits : ",digits)
+print("Lower case letters : ", lower)
+print("Upper case letters : ",upper)
+
+#6(b)
+
+from array import *
+a=array('i',[1,4,2,6,8,3,10])     
+ele=int(input("Enter search element"))
+flag=0
+for i in range(len(a)):
+        if(a[i] == ele):
+            flag=i+1
+            break
+        else:
+             pass
+if(flag == 0):
+    print("Not found")
+else:
+    print('Element found in',flag,'position')
